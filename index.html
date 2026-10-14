@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERPMF4T7YG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-  
+
     gtag('config', 'G-ERPMF4T7YG');
   </script>
   <meta charset="UTF-8">
@@ -27,35 +28,63 @@
       -webkit-touch-callout: none;
       touch-action: manipulation;
     }
+
     /* iOS WebKit scroll smoothness */
     .smooth-scroll {
       -webkit-overflow-scrolling: touch;
     }
+
     /* Card flip & pop animations */
     .card-pop {
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+
     .card-pop:active {
       transform: scale(0.92);
     }
+
     @keyframes pulse-success {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
+
     .animate-success {
       animation: pulse-success 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     @keyframes shake-error {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-8px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(8px);
+      }
     }
+
     .animate-error {
       animation: shake-error 0.4s ease-in-out;
     }
   </style>
 </head>
+
 <body class="bg-amber-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
   <!-- Header Section -->
@@ -75,13 +104,16 @@
   <!-- Main Navigation Tabs -->
   <nav class="bg-white border-b border-amber-200 shadow-sm sticky top-[57px] z-40">
     <div class="max-w-md mx-auto flex justify-around p-2">
-      <button onclick="switchTab('board')" id="tab-board" class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base bg-amber-500 text-white shadow-sm transition">
+      <button onclick="switchTab('board')" id="tab-board"
+        class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base bg-amber-500 text-white shadow-sm transition">
         <i class="fa-solid fa-grid-2 mr-1"></i> BOPOMOFO
       </button>
-      <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base text-amber-700 hover:bg-amber-100 transition">
+      <button onclick="switchTab('quiz')" id="tab-quiz"
+        class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base text-amber-700 hover:bg-amber-100 transition">
         <i class="fa-solid fa-volume-high mr-1"></i> Listen & Match
       </button>
-      <button onclick="switchTab('picture')" id="tab-picture" class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base text-amber-700 hover:bg-amber-100 transition">
+      <button onclick="switchTab('picture')" id="tab-picture"
+        class="tab-btn flex-1 py-2 px-3 text-center rounded-xl font-bold text-sm sm:text-base text-amber-700 hover:bg-amber-100 transition">
         <i class="fa-solid fa-image mr-1"></i> What's that sound?
       </button>
     </div>
@@ -125,14 +157,16 @@
 
     <!-- 2. Listen & Match Mode -->
     <section id="mode-quiz" class="hidden space-y-6 max-w-lg mx-auto w-full">
-      <div class="bg-white rounded-3xl p-6 shadow-xl border-4 border-amber-300 text-center space-y-6 relative overflow-hidden">
+      <div
+        class="bg-white rounded-3xl p-6 shadow-xl border-4 border-amber-300 text-center space-y-6 relative overflow-hidden">
         <div class="bg-amber-100 text-amber-800 py-2 px-4 rounded-full text-xs sm:text-sm font-bold inline-block">
           Listen and match the BOPOMOFO！
         </div>
 
         <!-- Big Audio Button -->
         <div class="py-4">
-          <button onclick="playQuizSound()" id="quiz-audio-btn" class="w-28 h-28 bg-gradient-to-tr from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-white rounded-full shadow-lg mx-auto flex flex-col justify-center items-center active:scale-95 transition transform border-4 border-white">
+          <button onclick="playQuizSound()" id="quiz-audio-btn"
+            class="w-28 h-28 bg-gradient-to-tr from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-white rounded-full shadow-lg mx-auto flex flex-col justify-center items-center active:scale-95 transition transform border-4 border-white">
             <i class="fa-solid fa-volume-high text-4xl mb-1 animate-pulse"></i>
             <span class="text-xs font-bold">Hear me</span>
           </button>
@@ -155,7 +189,9 @@
 
         <!-- Picture & Word Display -->
         <div class="py-4 flex flex-col items-center">
-          <div id="pic-emoji" class="text-7xl mb-2 filter drop-shadow-md transform hover:scale-110 transition cursor-pointer" onclick="speakCurrentPicWord()">🍎</div>
+          <div id="pic-emoji"
+            class="text-7xl mb-2 filter drop-shadow-md transform hover:scale-110 transition cursor-pointer"
+            onclick="speakCurrentPicWord()">🍎</div>
           <div id="pic-word" class="text-2xl font-black text-slate-700 tracking-wider">蘋果</div>
         </div>
 
@@ -175,15 +211,19 @@
   </footer>
 
   <!-- Detail Modal -->
-  <div id="detail-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border-4 border-amber-400 relative animate-success">
-      <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 text-2xl font-bold w-8 h-8 rounded-full flex items-center justify-center">✕</button>
-      
+  <div id="detail-modal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div
+      class="bg-white rounded-3xl p-6 max-w-xs w-full text-center space-y-4 shadow-2xl border-4 border-amber-400 relative animate-success">
+      <button onclick="closeModal()"
+        class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 text-2xl font-bold w-8 h-8 rounded-full flex items-center justify-center">✕</button>
+
       <div id="modal-symbol" class="text-6xl font-black text-amber-500 py-2">ㄅ</div>
       <div id="modal-emoji" class="text-5xl">爸</div>
       <div id="modal-word" class="text-xl font-bold text-slate-700">爸爸</div>
 
-      <button onclick="playModalSound()" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl shadow-md flex items-center justify-center gap-2">
+      <button onclick="playModalSound()"
+        class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl shadow-md flex items-center justify-center gap-2">
         <i class="fa-solid fa-volume-high"></i> Hear it again!
       </button>
     </div>
@@ -308,7 +348,7 @@
       zhuyinData.forEach(item => {
         const card = document.createElement('button');
         card.className = "card-pop bg-white border-2 border-amber-200 hover:border-amber-400 rounded-2xl p-2.5 flex flex-col items-center justify-center shadow-sm active:bg-amber-100 transition focus:outline-none";
-        
+
         let colorClass = "text-amber-600";
         if (item.type === "medial") colorClass = "text-teal-600";
         if (item.type === "final") colorClass = "text-rose-600";
@@ -334,7 +374,7 @@
       document.getElementById('modal-emoji').textContent = item.emoji;
       document.getElementById('modal-word').textContent = item.word;
       document.getElementById('detail-modal').classList.remove('hidden');
-      
+
       // Speak symbol and word
       speak(`${item.symbol}，${item.word}`);
     }
@@ -370,7 +410,7 @@
     // --- Quiz 1: Listening Quiz ---
     function generateQuizQuestion() {
       document.getElementById('quiz-feedback').innerHTML = '';
-      
+
       // Choose random target
       const target = zhuyinData[Math.floor(Math.random() * zhuyinData.length)];
       currentQuizTarget = target;
@@ -410,13 +450,13 @@
 
     function checkQuizAnswer(selectedSymbol, btnElement) {
       const feedback = document.getElementById('quiz-feedback');
-      
+
       if (selectedSymbol === currentQuizTarget.symbol) {
         playBeep('correct');
         speak_en("Correct！Excellent！");
         feedback.innerHTML = `<span class="text-emerald-500">🎉 Correct！ +10 分</span>`;
         btnElement.classList.add('bg-emerald-200', 'border-emerald-500', 'animate-success');
-        
+
         currentScore += 10;
         document.getElementById('score-display').textContent = currentScore;
 
@@ -498,4 +538,5 @@
     });
   </script>
 </body>
+
 </html>
